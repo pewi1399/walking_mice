@@ -21,6 +21,7 @@
     		height = 550 - margin.top - margin.bottom,
         bar_offset = 40;
 
+      var img_width = 50
 
 
       var data = [
@@ -105,10 +106,19 @@
 
           imgs.attr("x", function(d){ return  x0(d.x1);})
               .attr("y", function(d){ return y(d.y1); })
-              .attr('width', 50)
+              .attr('width', img_width)
               .attr('height', 60)
               .attr("opacity", 0.2)
-              .attr("xlink:href","images/mouse.png")
+              .attr("xlink:href","images/block.png")
+              .attr("transform", "translate("+ (margin.left - img_width/2) +","+margin.top+")")
+              .transition()
+              .duration(function(){return (10000*Math.random());})
+              .attr("opacity",1)
+              .attr("x", function(d){ return  x0(d.x2);})
+              .attr("y", function(d){ return y(d.y2); })
+              .transition()
+              .duration(2000)
+              .attr("y", function(d){ return y(d.y3); });
 
 
 
